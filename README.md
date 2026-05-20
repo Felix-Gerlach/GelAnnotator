@@ -1,6 +1,5 @@
 # Gel Annotator - Operator Manual
-
-Version: `gel_annotator_v0_4_6_clean_copy.py`  
+ 
 Author: Felix Gerlach  
 Bug reports: felixgerlach@yahoo.de
 
@@ -50,10 +49,6 @@ Main controls:
 - Image selector buttons
 - `Readme / Help` button
 
-Notes:
-- Theme color is applied to UI and lane-number circle accents.
-- You can load multiple images from different folders.
-
 ## Step 2a - Panel Selection from Source Images (mode-dependent)
 
 Used when selecting multiple panels before composition.
@@ -87,16 +82,10 @@ Functions:
 - rotation (`Apply`, `+/-90`, `+/-1`),
 - crop and reset edits.
 
-Navigation:
-- right-click on preview advances to next step.
-
 ## Step 3b - Panel Selection from Single Edited Image (mode-dependent)
 
 Functions:
 - draw one or more crop rectangles from the edited image.
-
-Navigation:
-- right-click on preview advances to next step.
 
 ## Step 4 - Panel Layout
 
@@ -108,10 +97,6 @@ Functions:
 
 Display:
 - lane boundaries + lane numbers in circles are shown over preview.
-
-Navigation:
-- floating `Next` button (bottom-right) is always available,
-- right-click advances to next step.
 
 ## Step 4b - Band Highlights (optional)
 
@@ -128,14 +113,6 @@ Controls:
 - apply style to existing highlights,
 - remove last / clear all.
 
-Behavior:
-- highlight scaling stays consistent between steps and preview levels.
-- overlays persist while zooming/panning.
-
-Navigation:
-- floating `Next` button,
-- right-click advances.
-
 ## Step 5 - Header / Column Annotation
 
 Functions:
@@ -151,14 +128,6 @@ Functions:
 - per-element offsets,
 - top-annotation order editing.
 
-UI:
-- horizontal scrolling for large row tables,
-- lane numbers shown under lanes as circles (theme-colored accents),
-- floating `Next` button.
-
-Navigation:
-- right-click advances.
-
 ## Step 6 - Marker / Ladder
 
 Functions:
@@ -171,15 +140,8 @@ Functions:
   - label gap,
   - marker font size.
 
-Display:
-- temporary click markers are shown as red asterisks.
-- overlays remain visible while zooming/panning.
-
 Option:
 - `Run lane intensity/band analysis before review`.
-
-Navigation:
-- right-click advances.
 
 ## Step 6b - Lane Intensity and Band Analysis (optional)
 
@@ -199,10 +161,6 @@ Functions:
   - log-quadratic regression,
 - save analysis report.
 
-Notes:
-- The old on-screen "Detected bands log" panel is no longer shown.
-- Results are reflected in plots and report output.
-
 ## Step 7 - Review and Export
 
 Functions:
@@ -214,10 +172,7 @@ Functions:
   - size,
   - angle/orientation,
   - line/tick/bracket styling,
-- save final output.
-
-Also available:
-- apply band-label font size to all panels.
+- save final output
 
 ---
 
@@ -239,41 +194,3 @@ Selected core defaults in current version:
 When background correction is enabled in analysis, workflow-specific reduced defaults are applied (`threshold=3`, `smoothing=5`).
 
 ---
-
-## 5. Troubleshooting
-
-### Overlay elements disappear while zooming
-- Fixed in this version by post-render overlay redraw hooks.
-- If still seen, switch steps once and return (forces full redraw).
-
-### Marker fit looks wrong
-- Re-check marker tick assignments.
-- Test alternate fit model in Step 6b.
-- Verify marker lane and marker definition.
-
-### Right-click advance not working
-- It is enabled on major preview steps (edit/layout/highlight/annotation/marker).
-- On some systems touchpad gestures may map differently; test with external mouse right button.
-
-### Controls cut off in right panel
-- Use mouse wheel over side panel (scroll container).
-- Enlarge app window.
-
----
-
-## 6. Build Windows EXE (PyInstaller)
-
-From project directory:
-
-```powershell
-py -3 -m PyInstaller --noconfirm --onefile --windowed `
-  --name GelAnnotator `
-  --add-data "README_Gel_Annotator.md;." `
-  "gel_annotator_v0_4_6_clean_copy.py"
-```
-
-Output:
-- `dist\GelAnnotator.exe`
-
-Important:
-- Keep `README_Gel_Annotator.md` bundled via `--add-data` so Step 1 help opens correctly in the EXE.
